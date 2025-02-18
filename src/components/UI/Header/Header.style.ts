@@ -7,9 +7,10 @@ export const SHeader = styled.header`
   left: 0;
   z-index: 100;
   padding: calc(1vw + 6.4px) calc(12vw - 35px);
-  background-color: ${({ theme }) => theme.colors.lightgray};
-  color: ${({ theme }) => theme.colors.white};
+  background-color: ${(props) => props.theme.color.lightGray};
+  color: ${(props) => props.theme.color.lightGray};
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 0 0 4% 4%;
 
   display: flex;
   align-items: center;
@@ -24,8 +25,7 @@ export const Logo = styled.div`
 
   a {
     text-decoration: none;
-    color: ${({ theme }) => theme.colors.white};
-    font-family: "Courier New", Courier, monospace;
+    color: ${(props) => props.theme.color.lightGray};
     display: flex;
     align-items: center;
 
@@ -36,11 +36,10 @@ export const Logo = styled.div`
     }
 
     &:hover {
-      text-shadow: 0 0 8px ${({ theme }) => theme.colors.primary};
+      text-shadow: 0 0 8px ${(props) => props.theme.color.red}
     }
   }
 `;
-
 
 export const ThemeToggleButton = styled.button`
   margin-left: 20px;
@@ -61,15 +60,16 @@ export const ThemeToggleButton = styled.button`
 export const FavoritesButton = styled.div`
   a {
     text-decoration: none;
-    padding: 10px 15px;
+    padding: 10px 10px;
     border-radius: 4px;
-    background-color: ${({ theme }) => theme.colors};
-    color: ${({ theme }) => theme.colors.white};
+    background-color: ${(props) => props.theme.color.blue};
+    color: ${(props) => props.theme.color.lightGray};
     font-weight: bold;
     transition: background-color 0.3s ease;
 
     &:hover {
-      background-color: ${({ theme }) => theme.colors.primary};
+      background-color: ${(props) => props.theme.color.blue};
+      
     }
   }
 `;

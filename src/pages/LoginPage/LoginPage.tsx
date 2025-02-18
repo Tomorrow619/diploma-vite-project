@@ -9,10 +9,10 @@ import { RootState } from "../../store/store";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import { Header } from "../../components/UI/Header/Header";
+
 import { AppInput } from "../../components/UI/AppInput/AppInput";
 import * as yup from "yup";
-import { SHeader } from "../../components/UI/Header/Header.style";
+
 
 
 

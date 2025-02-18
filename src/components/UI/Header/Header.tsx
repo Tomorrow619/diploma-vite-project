@@ -1,33 +1,35 @@
+import React from "react"
+import { FavoritesButton } from "./Header.style"
+import { SHeader } from "./Header.style"
+import { Link } from "react-router-dom"
+import { Logo } from "./Header.style"
+import { ThemeToggleButton } from "./Header.style"
+import { Searching } from "../../Searching/Searching"
 
-
-
-import React from "react";
-// import { SearchBar } from "../SearchBar/SearchBar";
-import { SHeader, ThemeToggleButton, Logo, FavoritesButton } from "./Header.style";
-import { Link } from "react-router-dom";
 
 interface HeaderProps {
   isNightMode: boolean;
   setIsNightMode: React.Dispatch<React.SetStateAction<boolean>>;
 }
+export const Header:React.FC<HeaderProps>= (isNightMode,setIsNightMode)=>{
 
-export const Header: React.FC<HeaderProps> = ({ isNightMode, setIsNightMode }) => {
   const toggleTheme = () => {
     setIsNightMode(!isNightMode);
   };
 
-  return (
-    <SHeader>
-      {/* Логотип */}
-      <Logo>
+
+return (
+
+<SHeader>
+<Logo>
         <Link to="/">
-          <img src='/public/logoR.png' alt=" Logo" />
-          RealEstate
+          <img src='/public/logoR.png'  />
+          Realtor
         </Link>
       </Logo>
 
       {/* Поле поиска */}
-      {/* <SearchBar onSearch={(value) => console.log("Поиск:", value)} /> */}
+      <Searching onSearch={(value) => console.log("Поиск:", value)} />
 
       {/* Кнопки: Переключение темы и переход в избранное */}
       <div style={{ display: "flex", alignItems: "center" }}>
@@ -39,11 +41,14 @@ export const Header: React.FC<HeaderProps> = ({ isNightMode, setIsNightMode }) =
         {/* Кнопка переключения темы */}
         <ThemeToggleButton onClick={toggleTheme} aria-label="Toggle theme">
           <img
-            src={isNightMode ? "/public/night.png" : "/public/day.png"}
+            src={isNightMode ? "/public/themeicon" : ""}
             alt={isNightMode ? "Ночной режим" : "Дневной режим"}
           />
         </ThemeToggleButton>
       </div>
-    </SHeader>
-  );
-};
+</SHeader>
+
+
+)
+
+}

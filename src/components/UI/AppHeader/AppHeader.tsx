@@ -1,9 +1,11 @@
 type TAppHeader = {
     AppHeaderText:string,
     textType:"h1"|"h2"|"h3"|"h4"|"h5"|"h6"
+    classname?:string
+    isNightMode?:boolean
   }
   
-  export const AppHeader = ({ AppHeaderText, textType }:TAppHeader) => {
+  export const AppHeader = ({ AppHeaderText, textType,isNightMode }:TAppHeader) => {
   
     function headerType() {
       switch (textType) {

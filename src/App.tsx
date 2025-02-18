@@ -4,9 +4,11 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import { LoginPage } from "./pages/LoginPage/LoginPage";
 import { RegistrationPage } from "./pages/RegistrationPage/RegistrationPage";
-import MainPage from "./pages/MainPage/MainPage";
+import { MainPage } from "./pages/MainPage/MainPage";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
+import { ThemeProvider } from "styled-components";
+import { CardPage } from "./pages/CardPage/CardPage";
 function App() {
   const routerConfig = createBrowserRouter([
     {
@@ -21,6 +23,14 @@ function App() {
       path: "/main-page",
       element: <MainPage />,
     },
+    {
+      path:"/card/:id",
+      element:<CardPage/>
+    },
+//     {
+// path:"favorites-page"
+// element:<FavoritesPage/>
+//     }
   ]);
   return (
     <Provider store={store}>
