@@ -1,24 +1,27 @@
 
 import "./MainPage.scss";
 import { Header } from "../../components/UI/Header/Header";
-import { SMainPage } from "./MainPage.style";
+import {  SMainPage } from "./MainPage.style";
 import { AppHeader } from "../../components/UI/AppHeader/AppHeader";
-import { SetStateAction, useState } from "react";
-import { ListingCard } from "../../components/Listing/Listing";
+import {  useState } from "react";
+import { ListingCard } from "../../components/Listing/ListingCard";
 
 export const MainPage: React.FC = () => {
-    const [isNightMode,setIsNightMode]=useState(true)
+    const [isNightMode, setIsNightMode] = useState(true);
+    const [searchQuery, setSearchQuery] = useState("");
   return (
     <>
-  
+  <div className="Abu">     
+    <img src="/src/assets/abu.jpg" alt="" />
+  </div>
     <SMainPage  isNightMode={isNightMode}> 
-    <Header isNightMode={isNightMode} setIsNightMode={setIsNightMode} />
+    <Header searchQuery={searchQuery} isNightMode={isNightMode} setIsNightMode={setIsNightMode} />
      <AppHeader
-     AppHeaderText="№1 Сервис по аренде и покупке недвижемости "
+     AppHeaderText="№1 Сервис по аренде и покупке недвижимости "
      textType="h1"
 
      />
-     <ListingCard/>
+     <ListingCard isNightMode={isNightMode} setIsNightMode={setIsNightMode} onSearch={setSearchQuery} searchQuery={""} />
     </SMainPage></>
   );
 };

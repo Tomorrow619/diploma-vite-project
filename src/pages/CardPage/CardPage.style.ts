@@ -12,11 +12,12 @@ export const SCardPage = styled.div<{ isNightMode: boolean }>`
 
   p {
     margin-top: 20px;
-    color: #646B63;
+    color:rgb(216, 16, 23);
+    
   }
 
   h1 {
-    color: #ECF0F1;
+    color:rgb(213, 11, 38);
     font-weight: bold;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
   }
@@ -24,14 +25,14 @@ export const SCardPage = styled.div<{ isNightMode: boolean }>`
   ${({ isNightMode }) =>
     isNightMode
       ? css`
-          background-color: #0d0d0d;
-          color: #f0f0f0;
-          background-image: url('/public/image.png');
+          background-color:rgb(248, 248, 248);
+          color:rgb(255, 255, 255);
+          background-image: url('');
         `
       : css`
-          background-color: #f5f5f5;
+          background-color:rgb(44, 40, 40);
           color: #0d0d0d;
-          background-image: url('/centraPark.png');
+          background-image: url('');
 
         `} 
 
@@ -72,10 +73,11 @@ export const Loader = styled.div`
 `;
 
 export const CardImage = styled.img`
-  width: 100%;
-  max-width: 600px;
+  width:400px;
+ height: 400px;
   margin-top: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  margin-bottom: 30px;
 `;
 

@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled,{css} from "styled-components";
 
-export const SListing = styled.div`
+export const SListing = styled.div<{ isNightMode: boolean }>`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px;
@@ -9,11 +9,11 @@ export const SListing = styled.div`
   
 `;
 
-export const ListingCardContainer = styled.div`
+export const ListingCardContainer = styled.div<{ isNightMode: boolean }>`
 background: white;
   border-radius: 10px;
   border: 1px solid #ddd;
-  padding: 20px;
+  padding: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out;
   display: flex;
@@ -23,6 +23,19 @@ background-image: url();
   &:hover {
     transform: scale(1.05);
   }
+  ${({ isNightMode }) =>
+    isNightMode
+      ? css`
+          background-color:rgb(255, 255, 255);
+          color:rgb(255, 255, 255);
+          background-image: url('');
+        `
+      : css`
+          background-color:rgb(18, 17, 17);
+          color: #0d0d0d;
+          background-image: url('');
+
+        `} 
 `;
 
 export const ListingImage = styled.img`
@@ -41,36 +54,37 @@ export const ListingTitle = styled.h3`
 `;
 
 export const ListingPrice = styled.p`
-  font-size: 16px;
+  font-size: 20px;
   color: #555;
   margin-bottom: 15px;
   text-align: center;
+  padding-left: 10px;
 `;
 
 export const FavoriteButton = styled.button<{ isFavorite: boolean }>`
   background-color: ${({ isFavorite }) => (isFavorite ? "#FF4040" : "#fff")};
   color: ${({ isFavorite }) => (isFavorite ? "#fff" : "#FF4040")};
-  border: 2px solid #FF4040;
-  border-radius: 50px;
-  padding: 10px;
+  border: 4px 4px solid #FF4040;
+  border-radius: 30px;
+  padding: 4px;
   font-size: 16px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom:2px;
 
   &::before {
-    content: "♡"; /* Сердечко */
-    font-size: 20px;
-    margin-right: 8px;
+    content: "♡"; 
+    font-size: 100px;
+    
   }
 
   &:hover {
     transform: scale(1.1);
     background-color: ${({ isFavorite }) => (isFavorite ? "#FF5757" : "#fff")};
-    color: #fff;
+    color: red;
   }
 
   &:focus {
@@ -92,18 +106,21 @@ export const PaginationContainer = styled.div`
   margin-top: 30px;
 `;
 
-export const PaginationButton = styled.button<{ isActive?: boolean }>`
-  /* background-color: ${({ isActive }) => (isActive ? "#00FFCC" : "#fff")};
-  color: ${({ isActive }) => (isActive ? "#fff" : "#333")}; */
+export const PaginationButton = styled.button<{ isActive?: boolean; isNavButton?: boolean }>`
+  background-color: ${({ isActive, isNavButton }) => 
+    isNavButton ? "#FF5733" : isActive ? "#007BFF" : "#fff"}; /* Меняем цвет у кнопок */
+  color: ${({ isActive, isNavButton }) => 
+    isNavButton ? "#fff" : isActive ? "#fff" : "#333"};
   border: 3px solid #ddd;
-  padding: 8px 15px;
-  border-radius: 5px;
+  padding: 5px 10px;
+  border-radius: 10px;
   font-size: 14px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color:rgb(255, 255, 255);
+    background-color: ${({ isActive, isNavButton }) => 
+      isNavButton ? "#E63E1D" : isActive ? "#0056b3" : "#f1f1f1"};
     color: #fff;
   }
 
@@ -117,6 +134,7 @@ export const PaginationButton = styled.button<{ isActive?: boolean }>`
     color: #aaa;
   }
 `;
+
 
 export const Loader = styled.div`
   display: flex;

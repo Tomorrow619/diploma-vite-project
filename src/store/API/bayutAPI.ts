@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { PropertyDetailsResponse, PropertyListResponse } from "./types";
+// import { PropertyDetailsResponse, PropertyListResponse } from "./types";
 
 export interface Agency {
   id: number;

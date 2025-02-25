@@ -44,7 +44,7 @@ export const CardPage: React.FC = () => {
           method: "GET",
           headers: {
             "x-rapidapi-key":
-              "9262b33bf3msh3d4bfa6d0451b7bp10f1b0jsnd801f9a5c02d",
+              "61ee0b8900msh80107f171d3379ap183911jsncf3c94ab8f9b",
             "x-rapidapi-host": "bayut.p.rapidapi.com",
           },
         }

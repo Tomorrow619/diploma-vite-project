@@ -31,7 +31,7 @@ export const Searching: React.FC<SearchingProps> = ({ onSearch }) => {
           {
             method: "GET",
             headers: {
-              "x-rapidapi-key": "9262b33bf3msh3d4bfa6d0451b7bp10f1b0jsnd801f9a5c02d",
+              "x-rapidapi-key": "f8560917c8mshc5ca660f1cbb6e8p1af4d9jsn92c7ddbdc745",
               "x-rapidapi-host": "bayut.p.rapidapi.com",
             },
           }

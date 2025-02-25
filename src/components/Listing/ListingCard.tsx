@@ -22,15 +22,27 @@ interface Apartment {
   location?: string;
   area?: string;
 }
+// import React from 'react';
 
-export const ListingCard: React.FC = () => {
+interface ListingCardProps {
+  isNightMode: boolean;
+  setIsNightMode: React.Dispatch<React.SetStateAction<boolean>>;
+  searchQuery: string;
+  onSearch: React.Dispatch<React.SetStateAction<string>>;
+}
+
+
+export const ListingCard: React.FC<ListingCardProps & {searchQuery:string}>  = ({isNightMode,setIsNightMode}) => {
   const [apartments, setApartments] = useState<Apartment[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const itemsPerPage = 8;
+  const [searchQuery,setSearchQuery]=useState<string>("")
   const navigate = useNavigate();
-
+useEffect(()=>{
+  fetchApartmentData()
+},[])
   const handleClick = (apartment: Apartment) => {
     navigate(`/card/${apartment.id}`, { state: apartment });
   };
@@ -41,7 +53,7 @@ export const ListingCard: React.FC = () => {
     const options = {
       method: "GET",
       headers: {
-        "x-rapidapi-key": "47b2cd3a68msh571294ae338c697p1a16bejsn0715ed1e39fe",
+        "x-rapidapi-key": "f8560917c8mshc5ca660f1cbb6e8p1af4d9jsn92c7ddbdc745",
         "x-rapidapi-host": "bayut.p.rapidapi.com",
         "Content-Type": "application/json", // Убедитесь, что заголовки в правильной кодировке
       },
@@ -73,10 +85,19 @@ export const ListingCard: React.FC = () => {
     }
   };
   
-
+//Поиск по названию
   useEffect(() => {
     fetchApartmentData();
   }, []);
+  const filteredApartments = apartments.filter(apartment =>
+    apartment.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+  if (loading) return <Loader>Загрузка...</Loader>;
+  if (error) return <ErrorText>{error}</ErrorText>;
+  if (filteredApartments.length === 0) return <ErrorText>Нет доступных объектов.</ErrorText>;
+
+
+
 
   const totalPages = Math.ceil(apartments.length / itemsPerPage);
   const currentApartments = apartments.slice(
@@ -96,9 +117,9 @@ export const ListingCard: React.FC = () => {
 
   return (
     <>
-      <SListing>
+      <SListing isNightMode={isNightMode} >
         {currentApartments.map((apartment) => (
-          <ListingCardContainer key={apartment.id} onClick={() => handleClick(apartment)}>
+          <ListingCardContainer isNightMode={isNightMode}  key={apartment.id} onClick={() => handleClick(apartment)}>
             <div style={{ marginBottom: "15px" }}>
               {apartment.coverPhoto ? (
                 <ListingImage src={apartment.coverPhoto.url} alt={apartment.coverPhoto.title || "Изображение"} />
@@ -107,9 +128,9 @@ export const ListingCard: React.FC = () => {
               )}
             </div>
             <ListingTitle>{apartment.title}</ListingTitle>
-            <ListingPrice>{apartment.price}</ListingPrice>
+            <ListingPrice>{apartment.price}AED</ListingPrice>
             <div style={{ marginBottom: "20px" }}>
-              <FavoriteButton isFavorite={false}>Добавить в избранное</FavoriteButton>
+              <FavoriteButton isFavorite={false}></FavoriteButton>
             </div>
           </ListingCardContainer>
         ))}

@@ -7,8 +7,10 @@ import { RegistrationPage } from "./pages/RegistrationPage/RegistrationPage";
 import { MainPage } from "./pages/MainPage/MainPage";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
-import { ThemeProvider } from "styled-components";
+
 import { CardPage } from "./pages/CardPage/CardPage";
+import { FavoritesPage } from "./pages/FavoritesPage/FavoritesPage";
+import { AgencyPage } from "./pages/AgencyPage/AgencyPage";
 function App() {
   const routerConfig = createBrowserRouter([
     {
@@ -27,10 +29,15 @@ function App() {
       path:"/card/:id",
       element:<CardPage/>
     },
-//     {
-// path:"favorites-page"
-// element:<FavoritesPage/>
-//     }
+    {
+      path: "/favorites-page",
+      element: <FavoritesPage />,
+    },
+    {
+      path: "/agency-page",
+      element: <AgencyPage />,
+    }
+
   ]);
   return (
     <Provider store={store}>

@@ -8,19 +8,33 @@ const styles = {
     width: 100%;
     max-width: 500px;
     margin: 0 auto;
-`,
-SuggestionsContainer: styled.div`
-  color: black;
- 
-`,
-SuggestionItem: styled.div`
- /* color:black;
- background-color:black; */
-`,
+  `,
+
+  SuggestionsContainer: styled.div`
+    background-color: white; /* Фон списка предложений */
+    color: black; /* Цвет текста */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    max-height: 200px;
+    overflow-y: auto;
+  `,
+
+  SuggestionItem: styled.div`
+    padding: 10px;
+    cursor: pointer;
+    color: black; /* Цвет текста */
+    background-color: white; /* Фон элемента */
+    
+    &:hover {
+      background-color: #f1f1f1;
+    }
+  `,
+
   SearchInputWrapper: styled.div`
     position: relative;
     flex: 1;
   `,
+
   SearchInput: styled.input`
     width: 100%;
     padding: 10px 15px 10px 40px; /* Отступ слева для иконки */
@@ -28,11 +42,13 @@ SuggestionItem: styled.div`
     border-radius: 4px;
     font-size: 16px;
     outline: none;
+    color: black; /* Цвет текста */
 
     &:focus {
       border-color: #007bff;
     }
   `,
+
   SearchIcon: styled.div`
     position: absolute;
     left: 10px;
@@ -45,6 +61,7 @@ SuggestionItem: styled.div`
     background-repeat: no-repeat;
     pointer-events: none; /* Чтобы иконка не блокировала ввод текста */
   `,
+
   SearchButton: styled.button`
     margin-left: 10px;
     padding: 10px 15px;
@@ -56,11 +73,10 @@ SuggestionItem: styled.div`
     cursor: pointer;
 
     &:hover {
-      background-color: ${(props) => props.theme.color.lightGray};
-      color: ${(props) => props.theme.color.lightGray};
+      background-color: ${(props) => props.theme.color.red};
+      color: black; /* Черный цвет текста */
     }
   `,
-  
 };
 
 export default styles;

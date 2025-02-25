@@ -1,5 +1,5 @@
-import React from "react"
-import { FavoritesButton } from "./Header.style"
+import React, { useState } from "react"
+import { FavoritesButton, SAgencyList } from "./Header.style"
 import { SHeader } from "./Header.style"
 import { Link } from "react-router-dom"
 import { Logo } from "./Header.style"
@@ -11,38 +11,41 @@ interface HeaderProps {
   isNightMode: boolean;
   setIsNightMode: React.Dispatch<React.SetStateAction<boolean>>;
 }
-export const Header:React.FC<HeaderProps>= (isNightMode,setIsNightMode)=>{
+export const Header:React.FC<HeaderProps &{searchQuery:string} >= ({isNightMode, setIsNightMode})=>{
 
   const toggleTheme = () => {
     setIsNightMode(!isNightMode);
   };
 
 
+ const [searchQuery, setSearchQuery] = useState("");
 return (
 
-<SHeader>
+<SHeader isNightMode={isNightMode}>
 <Logo>
         <Link to="/">
-          <img src='/public/logoR.png'  />
+          <img src='/src/assets/logoR'  />
           Realtor
         </Link>
       </Logo>
 
       {/* Поле поиска */}
-      <Searching onSearch={(value) => console.log("Поиск:", value)} />
+      <Searching onSearch={setSearchQuery}  />
 
       {/* Кнопки: Переключение темы и переход в избранное */}
       <div style={{ display: "flex", alignItems: "center" }}>
         {/* Кнопка "Перейти в избранное" */}
-        <FavoritesButton>
-          <Link to="/favorits-page">Избранное</Link>
+        <FavoritesButton >
+          <Link to="/favorites-page">Избранное</Link>
         </FavoritesButton>
-
+        <SAgencyList>
+         <Link to="/agency-page">Agency</Link>
+         </SAgencyList>
         {/* Кнопка переключения темы */}
         <ThemeToggleButton onClick={toggleTheme} aria-label="Toggle theme">
           <img
-            src={isNightMode ? "/public/themeicon" : ""}
-            alt={isNightMode ? "Ночной режим" : "Дневной режим"}
+            src={isNightMode ? "/src/assets/themeicon.jpg" : "src/assets/themeicon.jpg"}
+            alt={isNightMode ? "" : ""}
           />
         </ThemeToggleButton>
       </div>
