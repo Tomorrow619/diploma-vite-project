@@ -104,11 +104,12 @@ export const PaginationContainer = styled.div`
   justify-content: center;
   gap: 10px;
   margin-top: 30px;
+
 `;
 
 export const PaginationButton = styled.button<{ isActive?: boolean; isNavButton?: boolean }>`
   background-color: ${({ isActive, isNavButton }) => 
-    isNavButton ? "#FF5733" : isActive ? "#007BFF" : "#fff"}; /* Меняем цвет у кнопок */
+    isNavButton ? "rgb(241, 52, 10)" : isActive ? "rgb(241, 52, 10)" : "#fff"}; /* Меняем цвет у кнопок */
   color: ${({ isActive, isNavButton }) => 
     isNavButton ? "#fff" : isActive ? "#fff" : "#333"};
   border: 3px solid #ddd;
@@ -120,7 +121,7 @@ export const PaginationButton = styled.button<{ isActive?: boolean; isNavButton?
 
   &:hover {
     background-color: ${({ isActive, isNavButton }) => 
-      isNavButton ? "#E63E1D" : isActive ? "#0056b3" : "#f1f1f1"};
+      isNavButton ? "rgb(241, 52, 10)" : isActive ? "rgb(241, 52, 10)" : "#f1f1f1"};
     color: #fff;
   }
 
