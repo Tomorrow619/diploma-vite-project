@@ -73,6 +73,12 @@ export const CardPage: React.FC = () => {
     <SCardPage isNightMode={isNightMode}>
       <Header isNightMode={isNightMode} setIsNightMode={setIsNightMode} searchQuery={""} />
       <CardTitle>{apartment.title}</CardTitle>
+        {apartment.coverPhoto && (
+          <CardImage
+            src={apartment.coverPhoto.url}
+            alt={apartment.coverPhoto.title || "Изображение"}
+          />
+        )}
       <CardPrice>Цена: {apartment.price} AED</CardPrice>
       <CardLocation>
         Расположение:{" "}
@@ -81,12 +87,6 @@ export const CardPage: React.FC = () => {
           : apartment.location || "Не указано"}
       </CardLocation>
       <CardArea>Площадь: {apartment.area || "Не указано"}</CardArea>
-      {apartment.coverPhoto && (
-        <CardImage
-          src={apartment.coverPhoto.url}
-          alt={apartment.coverPhoto.title || "Изображение"}
-        />
-      )}
     </SCardPage>
   );
 };

@@ -14,7 +14,7 @@ export const SCardPage = styled.div<{ isNightMode: boolean }>`
     margin-top: 20px;
     color:rgb(216, 16, 23);
     
-  }
+  } 
 
   h1 {
     color:rgb(213, 11, 38);
@@ -49,6 +49,10 @@ export const CardTitle = styled.h1`
   font-size: 2.5rem;
   text-align: center;
   color: #ECF0F1;
+  position: absolute;
+  z-index: 2;
+  top: 90px;
+
 `;
 
 export const CardArea = styled.p`
@@ -73,7 +77,7 @@ export const Loader = styled.div`
 `;
 
 export const CardImage = styled.img`
-  width:400px;
+  width:100vh;
  height: 400px;
   margin-top: 20px;
   border-radius: 10px;
