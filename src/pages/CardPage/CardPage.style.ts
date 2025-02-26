@@ -25,12 +25,12 @@ export const SCardPage = styled.div<{ isNightMode: boolean }>`
   ${({ isNightMode }) =>
     isNightMode
       ? css`
-          background-color:rgb(248, 248, 248);
+          background-color:rgb(254, 248, 248);
           color:rgb(255, 255, 255);
           background-image: url('');
         `
       : css`
-          background-color:rgb(44, 40, 40);
+          background-color:rgb(60, 57, 57);
           color: #0d0d0d;
           background-image: url('');
 

@@ -65,7 +65,7 @@ const styles = {
   SearchButton: styled.button`
     margin-left: 10px;
     padding: 10px 15px;
-    background-color: #82898F;
+    background-color:rgb(227, 10, 31);
     color: white;
     border: none;
     border-radius: 4px;

@@ -1,14 +1,29 @@
-import styled from "styled-components";
+import styled,{css} from "styled-components";
 
-export const SAgencyList = styled.div`
+export const SAgencyList = styled.div<{ isNightMode: boolean }>`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(400px, 3fr));
   gap: 20px;
   padding: 20px;
+  ${({ isNightMode }) =>
+    isNightMode
+      ? css`
+          background-color:rgb(230, 222, 222);
+          color:rgb(255, 255, 255);
+          background-image: url('');
+        `
+      : css`
+          background-color:rgb(105, 102, 102);
+          color: #0d0d0d;
+          background-image: url('');
+
+        `} 
+
 `;
 
-export const SAgencyCard = styled.div`
-  background: #ffffff;
+export const SAgencyCard = styled.div<{ isNightMode: boolean }>`
+  background: ${({ isNightMode }) => (isNightMode ? "#ffffff" :"#333" )};
+  color: ${({ isNightMode }) => (isNightMode ? "#ffffff" : "#000000")};
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   padding: 40px 40px;

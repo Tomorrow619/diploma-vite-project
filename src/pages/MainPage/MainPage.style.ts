@@ -1,6 +1,6 @@
 
 import styled, {css} from "styled-components";
-import { boolean } from "yup";
+
 
 export const SMainPage = styled.div<{ isNightMode: boolean }>`
   min-height: 100vh;
@@ -12,6 +12,7 @@ export const SMainPage = styled.div<{ isNightMode: boolean }>`
   background-size: cover;
   background-position: center;
   transition: background-color 0.3s, color 0.3s;
+  /* padding-top: -10px; */
   
  
   ${({ isNightMode }) =>

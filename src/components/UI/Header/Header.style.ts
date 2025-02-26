@@ -80,7 +80,7 @@ export const FavoritesButton = styled.div`
     padding: 10px 10px;
     border-radius: 4px;
     background-color: ${(props) => props.theme.color.red};
-    color: ${(props) => props.theme.color.gray};
+    color: white;
     font-weight: bold;
     transition: background-color 0.3s ease;
 

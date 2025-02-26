@@ -44,7 +44,7 @@ export const CardPage: React.FC = () => {
           method: "GET",
           headers: {
             "x-rapidapi-key":
-              "61ee0b8900msh80107f171d3379ap183911jsncf3c94ab8f9b",
+              "047adf096dmsh04f0cc05d59e3e5p1af68djsn734230bdf12c",
             "x-rapidapi-host": "bayut.p.rapidapi.com",
           },
         }
@@ -71,7 +71,7 @@ export const CardPage: React.FC = () => {
   return (
     
     <SCardPage isNightMode={isNightMode}>
-      <Header isNightMode={isNightMode} setIsNightMode={setIsNightMode} />
+      <Header isNightMode={isNightMode} setIsNightMode={setIsNightMode} searchQuery={""} />
       <CardTitle>{apartment.title}</CardTitle>
       <CardPrice>Цена: {apartment.price} AED</CardPrice>
       <CardLocation>

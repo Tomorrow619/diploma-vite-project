@@ -4,6 +4,7 @@ import { Header } from "../../components/UI/Header/Header";
 import { AppHeader } from "../../components/UI/AppHeader/AppHeader";
 
 
+
 export const AgencyPage:React.FC=()=>{
     const [searchQuery, setSearchQuery] = React.useState("");
     const [isNightMode, setIsNightMode] = React.useState(false);
@@ -16,7 +17,7 @@ AppHeaderText="Агентсва недвижимости"
 textType="h1"
 
         /> 
-        <AgencyList />
+        <AgencyList isNightMode={isNightMode} setIsNightMode={setIsNightMode} />
       </div>
     )
 }

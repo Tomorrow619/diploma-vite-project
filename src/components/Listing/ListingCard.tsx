@@ -22,13 +22,16 @@ interface Apartment {
   location?: string;
   area?: string;
 }
-// import React from 'react';
+// import React from 'react'; 
 
 interface ListingCardProps {
   isNightMode: boolean;
   setIsNightMode: React.Dispatch<React.SetStateAction<boolean>>;
   searchQuery: string;
   onSearch: React.Dispatch<React.SetStateAction<string>>;
+  apartment: Apartment;
+  isFavorite: boolean;
+  onFavoriteToggle: () => void;
 }
 
 
@@ -38,22 +41,38 @@ export const ListingCard: React.FC<ListingCardProps & {searchQuery:string}>  = (
   const [error, setError] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const itemsPerPage = 8;
+  const [favorites, setFavorites] = useState<string[]>([]);
   const [searchQuery,setSearchQuery]=useState<string>("")
   const navigate = useNavigate();
-useEffect(()=>{
-  fetchApartmentData()
-},[])
+  useEffect(() => {
+    fetchApartmentData();
+    const savedFavorites = localStorage.getItem("favorites");
+    if (savedFavorites) {
+      setFavorites(JSON.parse(savedFavorites));
+    }
+  }, []);
   const handleClick = (apartment: Apartment) => {
     navigate(`/card/${apartment.id}`, { state: apartment });
   };
+  const toggleFavorite = (apartment: Apartment) => {
+    let updatedFavorites: string[];
 
+    if (favorites.includes(apartment.id)) {
+      updatedFavorites = favorites.filter((favId) => favId !== apartment.id);
+    } else {
+      updatedFavorites = [...favorites, apartment.id];
+    }
+
+    setFavorites(updatedFavorites);
+    localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+  };
   const fetchApartmentData = async () => {
     const url =
       "https://bayut.p.rapidapi.com/properties/list?locationExternalIDs=5002%2C6020&purpose=for-rent&hitsPerPage=25&page=0&lang=en";
     const options = {
       method: "GET",
       headers: {
-        "x-rapidapi-key": "f8560917c8mshc5ca660f1cbb6e8p1af4d9jsn92c7ddbdc745",
+        "x-rapidapi-key": "047adf096dmsh04f0cc05d59e3e5p1af68djsn734230bdf12c",
         "x-rapidapi-host": "bayut.p.rapidapi.com",
         "Content-Type": "application/json", // Убедитесь, что заголовки в правильной кодировке
       },
@@ -120,7 +139,7 @@ useEffect(()=>{
       <SListing isNightMode={isNightMode} >
         {currentApartments.map((apartment) => (
           <ListingCardContainer isNightMode={isNightMode}  key={apartment.id} onClick={() => handleClick(apartment)}>
-            <div style={{ marginBottom: "15px" }}>
+            <div style={{ marginBottom: "15px" }} >
               {apartment.coverPhoto ? (
                 <ListingImage src={apartment.coverPhoto.url} alt={apartment.coverPhoto.title || "Изображение"} />
               ) : (
@@ -130,7 +149,11 @@ useEffect(()=>{
             <ListingTitle>{apartment.title}</ListingTitle>
             <ListingPrice>{apartment.price}AED</ListingPrice>
             <div style={{ marginBottom: "20px" }}>
-              <FavoriteButton isFavorite={false}></FavoriteButton>
+              <FavoriteButton  isFavorite={favorites.some((fav) => fav === apartment.id)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    toggleFavorite(apartment);
+                  }}></FavoriteButton>
             </div>
           </ListingCardContainer>
         ))}

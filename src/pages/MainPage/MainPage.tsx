@@ -21,7 +21,9 @@ export const MainPage: React.FC = () => {
      textType="h1"
 
      />
-     <ListingCard isNightMode={isNightMode} setIsNightMode={setIsNightMode} onSearch={setSearchQuery} searchQuery={""} />
+     <ListingCard isNightMode={isNightMode} setIsNightMode={setIsNightMode} onSearch={setSearchQuery} searchQuery={""} apartment={{ id: "1", name: "Sample Apartment", location: "Sample Location" }} isFavorite={false} onFavoriteToggle={function (): void {
+          throw new Error("Function not implemented.");
+        } } />
     </SMainPage></>
   );
 };

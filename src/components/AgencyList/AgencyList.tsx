@@ -16,8 +16,12 @@ type Agency = {
   logo?: { url: string };
   adCount?: number;
 };
+interface AgencyListProps {
+  isNightMode: boolean;
+    setIsNightMode: React.Dispatch<React.SetStateAction<boolean>>
+}
 
-export const AgencyList: React.FC = () => {
+export const AgencyList: React.FC<AgencyListProps> = ({isNightMode,setIsNightMode}) => {
   const [agencies, setAgencies] = useState<Agency[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -29,7 +33,7 @@ export const AgencyList: React.FC = () => {
           {
             method: "GET",
             headers: {
-              "x-rapidapi-key": "f8560917c8mshc5ca660f1cbb6e8p1af4d9jsn92c7ddbdc745",
+              "x-rapidapi-key": "047adf096dmsh04f0cc05d59e3e5p1af68djsn734230bdf12c",
               "x-rapidapi-host": "bayut.p.rapidapi.com",
             },
           }
@@ -49,9 +53,9 @@ export const AgencyList: React.FC = () => {
   if (loading) return <p>Загрузка...</p>;
 
   return (
-    <SAgencyList>
+    <SAgencyList isNightMode={isNightMode}>
       {agencies.map((agency) => (
-        <SAgencyCard key={agency.id}>
+        <SAgencyCard key={agency.id} isNightMode={isNightMode}>
           {agency.logo?.url ? (
             <SAgencyLogo src={agency.logo.url} alt={agency.name} />
           ) : (

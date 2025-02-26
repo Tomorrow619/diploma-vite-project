@@ -23,8 +23,8 @@ return (
 
 <SHeader isNightMode={isNightMode}>
 <Logo>
-        <Link to="/">
-          <img src='/src/assets/logoR'  />
+        <Link to="/main-page">
+          <img src='/src/assets/logoR.png'  />
           Realtor
         </Link>
       </Logo>
