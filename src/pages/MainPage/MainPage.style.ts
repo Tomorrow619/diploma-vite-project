@@ -19,13 +19,13 @@ export const SMainPage = styled.div<{ isNightMode: boolean }>`
     isNightMode
       ? css`
           background-color:rgb(255, 255, 255);
-          color: #f0f0f0;
-          background-image:url('')
+          color:rgb(7, 7, 7);
+          /* background-image:url('/src/assets/doma.jpg') */
         `
       : css`
           background-color:rgb(105, 102, 102);
           color: #1a1a1a;
-          background-image: url();
+          /* background-image: url("/src/assets/abu.jpeg"); */
         `}
         
   h1 {

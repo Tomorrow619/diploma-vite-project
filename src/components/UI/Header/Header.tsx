@@ -5,11 +5,10 @@ import { Link } from "react-router-dom"
 import { Logo } from "./Header.style"
 import { ThemeToggleButton } from "./Header.style"
 import { Searching } from "../../Searching/Searching"
-
-
 interface HeaderProps {
   isNightMode: boolean;
   setIsNightMode: React.Dispatch<React.SetStateAction<boolean>>;
+  onSeacrh:(query:string)=>void;
 }
 export const Header:React.FC<HeaderProps &{searchQuery:string} >= ({isNightMode, setIsNightMode})=>{
 

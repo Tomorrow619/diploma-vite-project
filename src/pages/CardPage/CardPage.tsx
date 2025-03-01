@@ -21,7 +21,7 @@ interface Detail {
 }
 
 export const CardPage: React.FC = () => {
-  const [isNightMode, setIsNightMode] = useState(true);
+  const [isNightMode, setIsNightMode] = useState(true); //Хранит состояние ночного режима
   const location = useLocation();
   const { id } = useParams(); // Получаем ID из URL
   const [apartment, setApartment] = useState<Detail | null>(
@@ -29,7 +29,7 @@ export const CardPage: React.FC = () => {
   );
 
   // Загружаем данные, если apartment === null
-  useEffect(() => {
+  useEffect(() => { 
     if (!apartment && id) {
       fetchApartmentById(id);
     }
@@ -44,7 +44,7 @@ export const CardPage: React.FC = () => {
           method: "GET",
           headers: {
             "x-rapidapi-key":
-              "047adf096dmsh04f0cc05d59e3e5p1af68djsn734230bdf12c",
+              "13cb3b5572msh339aab0cac1ea45p19fd45jsn5cc42efc9f35",
             "x-rapidapi-host": "bayut.p.rapidapi.com",
           },
         }
@@ -71,7 +71,9 @@ export const CardPage: React.FC = () => {
   return (
     
     <SCardPage isNightMode={isNightMode}>
-      <Header isNightMode={isNightMode} setIsNightMode={setIsNightMode} searchQuery={""} />
+      <Header isNightMode={isNightMode} setIsNightMode={setIsNightMode} searchQuery={""} onSeacrh={function (query: string): void {
+        throw new Error("Function not implemented.");
+      } } />
       <CardTitle>{apartment.title}</CardTitle>
         {apartment.coverPhoto && (
           <CardImage

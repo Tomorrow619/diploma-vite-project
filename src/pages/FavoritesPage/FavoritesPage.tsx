@@ -36,7 +36,9 @@ export const FavoritesPage: React.FC = () => {
   if (favorites.length === 0) {
     return (
       <FavoritesContainer>
-    <Header isNightMode={isNightMode} setIsNightMode={setIsNightMode} searchQuery={""} />
+    <Header isNightMode={isNightMode} setIsNightMode={setIsNightMode} searchQuery={""} onSeacrh={function (query: string): void {
+          throw   new Error("Function not implemented.");
+        } } />
         <FavoritesTitle>Избранное</FavoritesTitle>
         <EmptyMessage>Нет объектов в избранном.</EmptyMessage>
       </FavoritesContainer>

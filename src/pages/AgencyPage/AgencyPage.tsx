@@ -11,7 +11,9 @@ export const AgencyPage:React.FC=()=>{
 
     return (
         <div>
-          <Header searchQuery={searchQuery} isNightMode={isNightMode} setIsNightMode={setIsNightMode} />
+          <Header searchQuery={searchQuery} isNightMode={isNightMode} setIsNightMode={setIsNightMode} onSeacrh={function (query: string): void {
+          throw new Error("Function not implemented.");
+        } } />
         <AppHeader 
 AppHeaderText="Агентсва недвижимости"
 textType="h1"

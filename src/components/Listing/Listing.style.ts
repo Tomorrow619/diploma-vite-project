@@ -11,14 +11,16 @@ export const SListing = styled.div<{ isNightMode: boolean }>`
 
 export const ListingCardContainer = styled.div<{ isNightMode: boolean }>`
 background: white;
-  border-radius: 10px;
+  border-radius: 15px;
   border: 1px solid #ddd;
-  padding: 8px;
+  padding: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.1s ease-in-out;
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+  overflow: hidden;
 background-image: url();
   &:hover {
     transform: scale(1.05);
@@ -41,44 +43,50 @@ background-image: url();
 export const ListingImage = styled.img`
   width: 100%;
   height: auto;
-  border-radius: 8px;
-  margin-bottom: 15px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
 `;
 
 export const ListingTitle = styled.h3`
-  font-size: 18px;
+ font-size: 16px;
   font-weight: 600;
   color: #333;
-  margin-bottom: 10px;
-  text-align: center;
+  margin-bottom: 8px;
+  text-align: left;
+  width: 100%;
 `;
 
 export const ListingPrice = styled.p`
-  font-size: 20px;
-  color: #555;
-  margin-bottom: 15px;
-  text-align: center;
-  padding-left: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 8px;
+  text-align: left;
+  width: 100%;
 `;
 
+
 export const FavoriteButton = styled.button<{ isFavorite: boolean }>`
-  background-color: ${({ isFavorite }) => (isFavorite ? "#FF4040" : "#fff")};
-  color: ${({ isFavorite }) => (isFavorite ? "#fff" : "#FF4040")};
-  border: 4px 4px solid #FF4040;
-  border-radius: 30px;
-  padding: 4px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-  display: inline-flex;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  /* background-color: ${({ isFavorite }) => (isFavorite ? "#FF4040" : "rgba(255, 255, 255, 0.8)")};
+  color: ${({ isFavorite }) => (isFavorite ? "#fff" : "#FF4040")}; */
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom:2px;
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 
   &::before {
-    content: "♡"; 
-    font-size: 100px;
-    
+    content: ${({ isFavorite }) => (isFavorite ? '"❤️"' : '"♡"')};
   }
 
   &:hover {

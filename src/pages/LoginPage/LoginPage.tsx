@@ -7,7 +7,7 @@ import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import { useLoginUserMutation } from "../../store/API/authAPI";
 import { RootState } from "../../store/store";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 import { AppInput } from "../../components/UI/AppInput/AppInput";
@@ -110,7 +110,7 @@ export const LoginPage = () => {
       <a href="#">Забыли пароль?</a>
       <div className="registration">
         <span>
-          У вас нет аккаунта? <a href="#">Зарегистрироваться</a>
+          У вас нет аккаунта? <Link to="registration-page">Зарегистрироваться</Link>
         </span>
         
         </div>

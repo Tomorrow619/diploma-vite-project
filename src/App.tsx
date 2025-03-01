@@ -1,5 +1,3 @@
-
-
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import { LoginPage } from "./pages/LoginPage/LoginPage";
@@ -11,6 +9,7 @@ import { store } from "./store/store";
 import { CardPage } from "./pages/CardPage/CardPage";
 import { FavoritesPage } from "./pages/FavoritesPage/FavoritesPage";
 import { AgencyPage } from "./pages/AgencyPage/AgencyPage";
+import { ListingPage } from "./pages/ListingPage/ListingPage";
 function App() {
   const routerConfig = createBrowserRouter([
     {
@@ -26,8 +25,8 @@ function App() {
       element: <MainPage />,
     },
     {
-      path:"/card/:id",
-      element:<CardPage/>
+      path: "/card/:id",
+      element: <CardPage />,
     },
     {
       path: "/favorites-page",
@@ -36,8 +35,11 @@ function App() {
     {
       path: "/agency-page",
       element: <AgencyPage />,
-    }
-
+    },
+    {
+      path: "listing-page",
+      element: <ListingPage isNightMode={false} />,
+    },
   ]);
   return (
     <Provider store={store}>
