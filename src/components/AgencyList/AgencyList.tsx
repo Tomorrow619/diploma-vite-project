@@ -7,7 +7,7 @@ import {
   SAgencyTitle,
   SAgencyInfo,
 } from "./AgencyList.style.ts";
-
+import { SBackgroundShadow } from "../UI/BackgroundShadow/BackgroundShadow.style.ts";
 type Agency = {
   id: number;
   name: string;
@@ -16,12 +16,13 @@ type Agency = {
   logo?: { url: string };
   adCount?: number;
 };
+
 interface AgencyListProps {
   isNightMode: boolean;
-    setIsNightMode: React.Dispatch<React.SetStateAction<boolean>>
+  setIsNightMode: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const AgencyList: React.FC<AgencyListProps> = ({isNightMode,setIsNightMode}) => {
+export const AgencyList: React.FC<AgencyListProps> = ({ isNightMode }) => {
   const [agencies, setAgencies] = useState<Agency[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -56,12 +57,12 @@ export const AgencyList: React.FC<AgencyListProps> = ({isNightMode,setIsNightMod
     <SAgencyList isNightMode={isNightMode}>
       {agencies.map((agency) => (
         <SAgencyCard key={agency.id} isNightMode={isNightMode}>
-          {agency.logo?.url ? (
-            <SAgencyLogo src={agency.logo.url} alt={agency.name} />
+          {agency.logo?.url ? (  <SBackgroundShadow>
+            <SAgencyLogo  src={agency.logo.url} alt={agency.name} /></SBackgroundShadow>
           ) : (
             <SAgencyPlaceholder>Нет логотипа</SAgencyPlaceholder>
           )}
-          <SAgencyTitle>{agency.name}</SAgencyTitle>
+          <SAgencyTitle isNightMode={isNightMode}>{agency.name}</SAgencyTitle>
           <SAgencyInfo>Локация: {agency.location || "Не указано"}</SAgencyInfo>
           <SAgencyInfo>Объявлений: {agency.adCount || "Нет данных"}</SAgencyInfo>
         </SAgencyCard>

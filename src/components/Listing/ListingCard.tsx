@@ -52,8 +52,8 @@ export const ListingCard: React.FC<ListingCardProps> = ({
           <ErrorText>Фото отсутствует</ErrorText>
         )}
       </div>
-      <ListingTitle>{apartment.title}</ListingTitle>
-      <ListingPrice>{apartment.price} AED</ListingPrice>
+      <ListingTitle  isNightMode={isNightMode}>{apartment.title}</ListingTitle>
+      <ListingPrice isNightMode={isNightMode}>{apartment.price} AED</ListingPrice>
       <div style={{ marginBottom: "20px" }}>
         <FavoriteButton
           isFavorite={isFavorite}

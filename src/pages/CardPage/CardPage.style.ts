@@ -65,7 +65,7 @@ export const CardLocation = styled.p`
 
 export const CardArea = styled.p`
   font-size: 1.2rem;
-  color: #34495E;
+  color:rgb(94, 130, 166);
   margin: 5px 0;
 `;
 

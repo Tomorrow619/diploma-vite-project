@@ -48,19 +48,19 @@ export const ListingImage = styled.img`
   margin-bottom: 10px;
 `;
 
-export const ListingTitle = styled.h3`
+export const ListingTitle = styled.h3<{ isNightMode: boolean }>`
  font-size: 16px;
   font-weight: 600;
-  color: #333;
+  color: ${({ isNightMode }) => (isNightMode ? "#333" : "#ffffff")};
   margin-bottom: 8px;
   text-align: left;
   width: 100%;
 `;
 
-export const ListingPrice = styled.p`
+export const ListingPrice = styled.p<{ isNightMode: boolean }>`
   font-size: 24px;
   font-weight: bold;
-  color: #000;
+  color: ${({ isNightMode }) => (isNightMode ? "red" : "#ffffff")};
   margin-bottom: 8px;
   text-align: left;
   width: 100%;

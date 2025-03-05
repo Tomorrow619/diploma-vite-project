@@ -7,7 +7,7 @@ import { AppHeader } from "../../components/UI/AppHeader/AppHeader";
 
 export const AgencyPage:React.FC=()=>{
     const [searchQuery, setSearchQuery] = React.useState("");
-    const [isNightMode, setIsNightMode] = React.useState(false);
+    const [isNightMode, setIsNightMode] = React.useState(true);
 
     return (
         <div>

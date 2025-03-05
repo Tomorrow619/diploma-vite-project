@@ -3,9 +3,9 @@ import {
   FavoritesContainer,
   FavoritesTitle,
   FavoritesList,
-  FavoriteCard,
+  // FavoriteCard,
   EmptyMessage,
-} from "./FavoritesPage.style"
+} from "./FavoritesPage.style";
 import { ListingCard } from "../../components/Listing/ListingCard";
 import { Header } from "../../components/UI/Header/Header";
 
@@ -18,7 +18,9 @@ interface Apartment {
 
 export const FavoritesPage: React.FC = () => {
   const [favorites, setFavorites] = useState<Apartment[]>([]);
-  const [isNightMode, setIsNightMode] = useState(false);
+  const [isNightMode, setIsNightMode] = useState(() => {
+    return localStorage.getItem("theme") === "dark"; // Загружаем тему из localStorage
+  });
 
   useEffect(() => {
     const savedFavorites = localStorage.getItem("favorites");
@@ -26,6 +28,11 @@ export const FavoritesPage: React.FC = () => {
       setFavorites(JSON.parse(savedFavorites));
     }
   }, []);
+
+  // Сохраняем тему при изменении
+  useEffect(() => {
+    localStorage.setItem("theme", isNightMode ? "dark" : "light");
+  }, [isNightMode]);
 
   const removeFavorite = (id: string) => {
     const updatedFavorites = favorites.filter((apartment) => apartment.id !== id);
@@ -35,34 +42,42 @@ export const FavoritesPage: React.FC = () => {
 
   if (favorites.length === 0) {
     return (
-      <FavoritesContainer>
-    <Header isNightMode={isNightMode} setIsNightMode={setIsNightMode} searchQuery={""} onSeacrh={function (query: string): void {
-          throw   new Error("Function not implemented.");
-        } } />
+      <FavoritesContainer isNightMode={isNightMode}>
+        <Header
+          isNightMode={isNightMode}
+          setIsNightMode={setIsNightMode}
+          searchQuery=""
+          onSeacrh={() => {}}
+        />
         <FavoritesTitle>Избранное</FavoritesTitle>
         <EmptyMessage>Нет объектов в избранном.</EmptyMessage>
       </FavoritesContainer>
     );
   }
 
-  return ( 
-    
-    <FavoritesContainer>
-      
+  return (
+    <FavoritesContainer isNightMode={isNightMode}>
+      <Header
+        isNightMode={isNightMode}
+        setIsNightMode={setIsNightMode}
+        searchQuery=""
+        onSeacrh={() => {}}
+      />
       <FavoritesTitle>Избранное</FavoritesTitle>
 
       <FavoritesList>
         {favorites.map((apartment) => (
-          <FavoriteCard key={apartment.id}>
+          // <FavoriteCard key={apartment.id}>
             <ListingCard
               apartment={apartment}
               isFavorite={favorites.some((fav) => fav.id === apartment.id)}
-              onFavoriteToggle={() => removeFavorite(apartment.id)} isNightMode={false} setIsNightMode={function (value: React.SetStateAction<boolean>): void {
-                throw new Error("Function not implemented.");
-              } } searchQuery={""} onSearch={function (value: React.SetStateAction<string>): void {
-                throw new Error("Function not implemented.");
-              } }            />
-          </FavoriteCard>
+              onFavoriteToggle={() => removeFavorite(apartment.id)}
+              isNightMode={isNightMode}
+              setIsNightMode={setIsNightMode}
+              searchQuery=""
+              onSearch={() => {}}
+            />
+          // </FavoriteCard>
         ))}
       </FavoritesList>
     </FavoritesContainer>
